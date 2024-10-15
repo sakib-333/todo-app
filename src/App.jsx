@@ -1,10 +1,10 @@
 import React from "react";
+import Header from "./components/header/Header";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-5xl font-bold bg-red-400">Hello React</h1>
-      <button className="btn btn-outline">Click</button>
+    <div className="w-11/12 mx-auto max-w-screen-2xl">
+      <Header />
     </div>
   );
 }
