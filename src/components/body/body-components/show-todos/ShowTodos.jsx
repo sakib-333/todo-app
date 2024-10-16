@@ -1,12 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../../../context/TodoContext";
+import ShowTodoInModal from "../../../modals/ShowTodoInModal";
 
 function ShowTodos() {
   let todoSequence = 1;
   const { todos } = useContext(TodoContext);
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+  const [clickedView, setClickedView] = useState(false);
+  const [clickedID, setClickedID] = useState(null);
+
+  function handleViewTodo(ID) {
+    setClickedView((currState) => !currState);
+    setClickedID(() => ID);
+  }
 
   return (
     <div className="mx-auto">
@@ -34,9 +39,19 @@ function ShowTodos() {
               />
               {todo.isCompleted ? "Yes" : "No"}
             </label>
-            <button className="btn btn-outline btn-success">View</button>
+            <button
+              className="btn btn-outline btn-success"
+              onClick={() => handleViewTodo(todo.id)}
+            >
+              View
+            </button>
             <button className="btn btn-outline btn-warning">Edit</button>
             <button className="btn btn-outline btn-error">Delete</button>
+            <div>
+              {clickedView && clickedID === todo.id && (
+                <ShowTodoInModal todo={todo} setClickedView={setClickedView} />
+              )}
+            </div>
           </div>
         );
       })}

@@ -2,7 +2,7 @@ export const Todos = [
   {
     id: crypto.randomUUID(),
     title: "Task-1",
-    whatToDo:
+    whatTodo:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugiat?",
     isCompleted: false,
     createdTime: "Sat Oct 12 2024 10:13:42",
@@ -10,7 +10,7 @@ export const Todos = [
   {
     id: crypto.randomUUID(),
     title: "Task-2",
-    whatToDo:
+    whatTodo:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugiat?",
     isCompleted: false,
     createdTime: "Sat Oct 12 2024 10:13:42",
@@ -18,7 +18,7 @@ export const Todos = [
   {
     id: crypto.randomUUID(),
     title: "Task-3",
-    whatToDo:
+    whatTodo:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugiat?",
     isCompleted: true,
     createdTime: "Sat Oct 12 2024 10:13:42",
@@ -26,7 +26,7 @@ export const Todos = [
   {
     id: crypto.randomUUID(),
     title: "Task-4",
-    whatToDo:
+    whatTodo:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugiat?",
     isCompleted: false,
     createdTime: "Sat Oct 12 2024 10:13:42",
