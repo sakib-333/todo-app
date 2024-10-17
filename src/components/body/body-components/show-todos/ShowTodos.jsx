@@ -3,14 +3,19 @@ import { TodoContext } from "../../../context/TodoContext";
 import ShowTodoInModal from "../../../modals/ShowTodoInModal";
 import EditTodoInModal from "../../../modals/EditTodoInModal";
 import DeleteTodoModal from "../../../modals/DeleteTodoModal";
+import { Actions } from "../../../actions/Actions";
 
 function ShowTodos() {
   let todoSequence = 1;
-  const { todos } = useContext(TodoContext);
+  const { todos, dispatch } = useContext(TodoContext);
   const [clickedView, setClickedView] = useState(false);
   const [clickedEdit, setClickedEdit] = useState(false);
   const [clickedDelete, setClickedDelete] = useState(false);
   const [clickedID, setClickedID] = useState(null);
+
+  function handleCompleteTodo(id) {
+    dispatch({ type: Actions.COMPLETE, payload: { id } });
+  }
 
   function handleViewTodo(ID) {
     setClickedView((currState) => !currState);
@@ -43,11 +48,18 @@ function ShowTodos() {
           >
             <h1>{todoSequence++}</h1>
             <h1>{todo.title}</h1>
-            <label className="flex items-center justify-center">
+            <label
+              className="flex items-center justify-center"
+              style={{
+                textDecoration: todo.isCompleted ? "line-through" : "",
+                opacity: todo.isCompleted ? "0.45" : "1",
+              }}
+            >
               <input
                 type="checkbox"
                 defaultChecked={todo.isCompleted}
                 className="checkbox checkbox-sm mr-2"
+                onChange={() => handleCompleteTodo(todo.id)}
               />
               {todo.isCompleted ? "Yes" : "No"}
             </label>
@@ -77,7 +89,10 @@ function ShowTodos() {
                 <EditTodoInModal todo={todo} setClickedEdit={setClickedEdit} />
               )}
               {clickedDelete && clickedID === todo.id && (
-                <DeleteTodoModal todo={todo} setClickedDelete={setClickedDelete} />
+                <DeleteTodoModal
+                  todo={todo}
+                  setClickedDelete={setClickedDelete}
+                />
               )}
             </div>
           </div>

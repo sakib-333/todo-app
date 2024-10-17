@@ -8,17 +8,21 @@ export const Reducer = (initState, { type, payload }) => {
       return [...initState, CreateTodo(payload.title, payload.whatTodo)];
 
     case Actions.EDIT:
-      const updateTodo = UpdateTodo(
-        payload.id,
-        payload.title,
-        payload.whatTodo
-      );
       return initState.map((todo) =>
-        todo.id === payload.id ? updateTodo : todo
+        todo.id === payload.id
+          ? UpdateTodo(payload.id, payload.title, payload.whatTodo)
+          : todo
       );
 
     case Actions.DELETE:
       return initState.filter((todo) => todo.id !== payload.id);
+
+    case Actions.COMPLETE:
+      return initState.map((todo) =>
+        todo.id === payload.id
+          ? { ...todo, isCompleted: !todo.isCompleted }
+          : todo
+      );
 
     default:
       return initState;
