@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../../../context/TodoContext";
 import ShowTodoInModal from "../../../modals/ShowTodoInModal";
 import EditTodoInModal from "../../../modals/EditTodoInModal";
+import DeleteTodoModal from "../../../modals/DeleteTodoModal";
 
 function ShowTodos() {
   let todoSequence = 1;
   const { todos } = useContext(TodoContext);
   const [clickedView, setClickedView] = useState(false);
   const [clickedEdit, setClickedEdit] = useState(false);
+  const [clickedDelete, setClickedDelete] = useState(false);
   const [clickedID, setClickedID] = useState(null);
 
   function handleViewTodo(ID) {
@@ -16,6 +18,10 @@ function ShowTodos() {
   }
   function handleEditTodo(ID) {
     setClickedEdit((currState) => !currState);
+    setClickedID(() => ID);
+  }
+  function handleDeleteTodo(ID) {
+    setClickedDelete((currState) => !currState);
     setClickedID(() => ID);
   }
 
@@ -57,13 +63,21 @@ function ShowTodos() {
             >
               Edit
             </button>
-            <button className="btn btn-outline btn-error">Delete</button>
+            <button
+              className="btn btn-outline btn-error"
+              onClick={() => handleDeleteTodo(todo.id)}
+            >
+              Delete
+            </button>
             <div>
               {clickedView && clickedID === todo.id && (
                 <ShowTodoInModal todo={todo} setClickedView={setClickedView} />
               )}
               {clickedEdit && clickedID === todo.id && (
                 <EditTodoInModal todo={todo} setClickedEdit={setClickedEdit} />
+              )}
+              {clickedDelete && clickedID === todo.id && (
+                <DeleteTodoModal todo={todo} setClickedDelete={setClickedDelete} />
               )}
             </div>
           </div>

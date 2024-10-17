@@ -17,6 +17,9 @@ export const Reducer = (initState, { type, payload }) => {
         todo.id === payload.id ? updateTodo : todo
       );
 
+    case Actions.DELETE:
+      return initState.filter((todo) => todo.id !== payload.id);
+
     default:
       return initState;
   }
