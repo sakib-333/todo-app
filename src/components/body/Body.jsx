@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
-import { TodoContext } from "../context/TodoContext";
+import React from "react";
 import AddTodoBtn from "./body-components/add-todo/AddTodoBtn";
 import ShowTodos from "./body-components/show-todos/ShowTodos";
 
 function Body() {
-  const { todos, dispatch } = useContext(TodoContext);
-
   return (
-    <>
+    <div className="min-h-screen">
       <AddTodoBtn />
       <ShowTodos />
-    </>
+    </div>
   );
 }
 

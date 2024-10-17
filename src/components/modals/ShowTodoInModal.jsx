@@ -6,10 +6,7 @@ function ShowTodoInModal({ todo, setClickedView }) {
   }, []);
 
   return (
-    <dialog
-      id="Show_Todo_In_Modal"
-      className="modal modal-bottom sm:modal-middle"
-    >
+    <dialog id="Show_Todo_In_Modal" className="modal modal-middle">
       <div className="modal-box text-left">
         <h3 className="text-lg font-bold">{todo.title}</h3>
         <p className="py-4 text-justify">{todo.whatTodo}</p>

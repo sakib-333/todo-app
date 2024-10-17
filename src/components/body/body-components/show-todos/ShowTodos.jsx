@@ -32,7 +32,7 @@ function ShowTodos() {
 
   return (
     <div className="mx-auto">
-      <div className="text-center grid grid-cols-6 border-b-2">
+      <div className="text-center grid grid-cols-6 border-b-2 pb-3">
         <h1 className="font-bold">#</h1>
         <h1 className="font-bold">Title</h1>
         <h1 className="font-bold">Completed</h1>

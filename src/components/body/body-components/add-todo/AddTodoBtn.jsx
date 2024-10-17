@@ -5,14 +5,14 @@ function AddTodoBtn() {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
-    <div className="flex justify-end">
+    <div className="flex justify-end my-4">
       <button
         className="btn btn-outline"
         onClick={() => setIsShowing((currState) => !currState)}
       >
         Add New Todo
       </button>
-      {isShowing && <AddNewTodoModal setIsShowing={setIsShowing}/>}
+      {isShowing && <AddNewTodoModal setIsShowing={setIsShowing} />}
     </div>
   );
 }

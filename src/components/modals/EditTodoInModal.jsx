@@ -4,7 +4,7 @@ import { TodoContext } from "../context/TodoContext";
 
 function EditTodoInModal({ todo, setClickedEdit }) {
   const { dispatch } = useContext(TodoContext);
-  
+
   function handleUpdateTodo(e) {
     e.preventDefault();
     const title = e.target[0].value;
@@ -22,7 +22,7 @@ function EditTodoInModal({ todo, setClickedEdit }) {
   }, []);
 
   return (
-    <dialog id="Edit_Todo_Modal" className="modal modal-bottom sm:modal-middle">
+    <dialog id="Edit_Todo_Modal" className="modal modal-middle">
       <div className="modal-box">
         <form
           className="my-4 flex flex-col space-y-4"
