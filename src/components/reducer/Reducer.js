@@ -7,6 +7,11 @@ export const Reducer = (initState, { type, payload }) => {
     case Actions.ADD:
       return [...initState, CreateTodo(payload.title, payload.whatTodo)];
 
+    case Actions.SEARCH:
+      return initState.filter((todo) =>
+        todo.title.toLowerCase().includes(payload.key)
+      );
+
     case Actions.EDIT:
       return initState.map((todo) =>
         todo.id === payload.id

@@ -5,9 +5,9 @@ function AddTodoBtn() {
   const [isShowing, setIsShowing] = useState(false);
 
   return (
-    <div className="flex justify-end my-4">
+    <div>
       <button
-        className="btn btn-outline"
+        className="btn btn-outline w-full"
         onClick={() => setIsShowing((currState) => !currState)}
       >
         Add New Todo
